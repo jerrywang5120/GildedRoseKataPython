@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from typing import List
 
 class Item:
     """ DO NOT CHANGE THIS CLASS!!!"""
@@ -14,7 +14,7 @@ class Item:
 
 class GildedRose(object):
 
-    def __init__(self, items: list[Item]):
+    def __init__(self, items: List[Item]):
         # DO NOT CHANGE THIS ATTRIBUTE!!!
         self.items = items
 

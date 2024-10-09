@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import unittest
 
 from gilded_rose import Item, GildedRose
@@ -9,8 +8,8 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item("foo", 0, 0)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertEquals("fixme", items[0].name)
-        
+        self.assertEqual(items[0].name, "foo")  # Checking if name remains unchanged
+
     def test_vest_item_should_decrease_after_one_day(self):
         vest = "+5 Dexterity Vest"
         items = [Item(vest, 1, 2), Item(vest, 9, 19), Item(vest, 4, 6)]
@@ -32,8 +31,8 @@ class GildedRoseTest(unittest.TestCase):
 
         gr.update_quality()
 
-        self.assertEqual("fix".quality, 1)
-        self.assertEqual("fix".quality, 11)
+        self.assertEqual(gr.items[0].quality, 1)
+        self.assertEqual(gr.items[1].quality, 11)
         self.assertEqual(gr.items[2].quality, 50)  # Quality should not exceed 50
 
     def test_sulfuras_does_not_change(self):
@@ -44,7 +43,7 @@ class GildedRoseTest(unittest.TestCase):
         gr.update_quality()
 
         # Sulfuras should not decrease in quality or sell_in
-        self.assertEqual("fix".sell_in, 0)
+        self.assertEqual(gr.items[0].sell_in, 0)
         self.assertEqual(gr.items[0].quality, 80)
         self.assertEqual(gr.items[1].sell_in, -1)
         self.assertEqual(gr.items[1].quality, 80)
